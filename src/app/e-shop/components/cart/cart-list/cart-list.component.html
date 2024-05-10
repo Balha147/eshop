@@ -1,0 +1,23 @@
+<div class="card border-secondary">
+  @if (cartItems().length) {
+  <div class="card-body">
+
+        <div class="row">
+          <div class="col-md-2 fw-bold">Image</div>
+          <div class="col-md-2 fw-bold">Product</div>
+          <div class="col-md-2 fw-bold">category</div>
+          <div class="col-md-2 fw-bold text-center">Price €</div>
+          <div class="col-md-2 fw-bold text-center">Quantity</div>
+          <div class="col-md-2 fw-bold text-end"></div>
+        </div>
+
+        <!-- *Display the cart items *-->
+        @for (item of cartItems(); track $index) {
+          <app-cart-item [item]="item" />
+          <hr />
+        }
+  </div>
+}@else {
+  No items in cart
+}
+</div>

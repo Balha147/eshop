@@ -1,0 +1,24 @@
+@if (categories().length) {
+<div class="categorie-list">
+  <h3 class="title">Catgories</h3>
+  <div class="content">
+    <ul>
+      @for (categorie of categories(); track $index) {
+        <li>
+          <button type="button"
+          class="list-group-item"
+          [ngClass]="{'active': categorie === selectedCategorie()}"
+          (click)="onSelected(categorie)">
+            {{ categorie }}
+          </button>
+        </li>
+      }
+    </ul>
+  </div>
+</div>
+}
+@if (errorMessage) {
+  <div class="alert alert-danger">
+    {{errorMessage }}
+  </div>
+}

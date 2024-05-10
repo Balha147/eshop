@@ -1,27 +1,35 @@
-# AngularSignals
+# CrudSignals
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.3.
+This application is a standalone application.
 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+## Tasks
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Create a Eshop application with signals (Angular 17) using [API](https://fakestoreapi.com/products/)
 
-## Running end-to-end tests
+* Add a product to Cart  using Signal
+* Modify a product using Signal
+* Delete a product using Signal
+* Badge of notification using Signal
+* Display list of product and categories using Signal
+* Filter list of products using Signal
+* Using lazy-loading 
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Used Approche
 
-## Further help
+I have used a __declarative Approach__
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Benefits
+
+* React to user actions and data emissions
+* Mege data from multiple sources
+* Shared data between components
+* More easily use features like the async pipe or use a signals

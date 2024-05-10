@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+@import "bootstrap/dist/css/bootstrap.min.css";
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}

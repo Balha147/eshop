@@ -1,0 +1,17 @@
+@if (products().length) {
+  <div class="row">
+  @for (product of products(); track product.id) {
+    <div class="col-md-4">
+      <app-product-item [item]="product"/>
+    </div>
+  }
+  </div>
+} @else {
+  <span>Sorry, No Product availbale</span>
+}
+
+@if (errorMessage) {
+  <div class="alert alert-danger">
+    {{errorMessage }}
+  </div>
+}
