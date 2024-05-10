@@ -1,0 +1,20 @@
+.pseudo-search {
+  border: 2px solid #ccc;
+  border-radius: 100px;
+  padding: 10px 15px;
+  transition: background-color 0.5 ease-in-out;
+  width: 100%;
+
+  input {
+    border: 0;
+    background-color: transparent;
+    outline: none;
+    width: 100%;
+  }
+
+  i {
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+}
