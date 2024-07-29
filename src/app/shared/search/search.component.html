@@ -1,3 +1,11 @@
-<div class="pseudo-search">
-  <input type="text" placeholder="Search..." autocomplete="off" [(ngModel)]="filter">
+<div class="pseudo-search relative border-2 border-gray-300 rounded-full p-2 transition-colors duration-500 ease-in-out w-full">
+  <input
+    type="text"
+    placeholder="Rechercher..."
+    autocomplete="off"
+    [(ngModel)]="filter"
+    class="w-full border-0 bg-transparent outline-none pl-2 pr-8"
+  />
+  <!-- Optionally include an icon here -->
+  <i class="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer"></i>
 </div>

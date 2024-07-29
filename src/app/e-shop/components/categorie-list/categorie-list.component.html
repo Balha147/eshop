@@ -1,24 +1,30 @@
 @if (categories().length) {
-<div class="categorie-list">
-  <h3 class="title">Catgories</h3>
-  <div class="content">
-    <ul>
-      @for (categorie of categories(); track $index) {
-        <li>
-          <button type="button"
-          class="list-group-item"
-          [ngClass]="{'active': categorie === selectedCategorie()}"
-          (click)="onSelected(categorie)">
-            {{ categorie }}
-          </button>
-        </li>
-      }
-    </ul>
+  <div class="bg-white p-7 mb-8 shadow-lg rounded-lg">
+    <h3 class="text-sm font-bold tracking-widest uppercase text-gray-500">Catégories</h3>
+    <div class="mt-4">
+      <ul>
+        @for (categorie of categories(); track $index) {
+          <li class="mb-2">
+            <button type="button"
+              class="w-full text-left py-2 px-4 rounded transition duration-300"
+              [ngClass]="{
+                'text-[#e2250c]': categorie === selectedCategorie(),
+                'text-[#000]': categorie !== selectedCategorie(),
+
+              }"
+              (click)="onSelected(categorie)"
+              role="button"
+              [attr.aria-pressed]="categorie === selectedCategorie() ? 'true' : 'false'">
+              {{ categorie }}
+            </button>
+          </li>
+        }
+      </ul>
+    </div>
   </div>
-</div>
 }
 @if (errorMessage) {
-  <div class="alert alert-danger">
-    {{errorMessage }}
+  <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+    {{ errorMessage }}
   </div>
 }

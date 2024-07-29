@@ -1,18 +1,27 @@
 @if (productItem()) {
-  <div class="card me-3 mb-3" style="width: 18rem;">
-    <img [src]="productItem().image" class="card-img-top" alt="product-image">
-    <div class="card-body">
-      <h4 class="card-title">{{productItem().title}}</h4>
-      <p class="card-text"><i class="fa fa-star me-2 icon"></i>{{productItem().rating.rate}}</p>
+  <div class="bg-white shadow-lg rounded-lg overflow-hidden flex flex-col h-full group relative">
+    <!-- Image section -->
+    <div class="flex justify-center items-center h-48">
+      <img [src]="productItem().image" class="object-cover max-w-full max-h-full" alt="product-image">
     </div>
-   <div class="d-flex justify-content-between mx-3">
-      <h5>{{productItem().price}} €</h5>
-      <button type="button" class="btn btn-primary mb-2" (click)="addToCart(productItem())">
-        <i class="fa fa-cart-shopping"></i>
-      </button>
-      <button type="button" class="btn btn-primary mb-2" (click)="navigateToProductDetails(productItem().id)">
-        <i class="fa fa-eye"></i>
-      </button>
+
+    <!-- Content section -->
+    <div class="flex-1 px-6 py-4">
+      <h4 class="font-bold text-xl mb-2">{{productItem().title}}</h4>
+      <div class="flex items-center justify-between">
+        <p class="text-gray-700 text-base flex items-center">
+          <i class="fa fa-star text-yellow-500 mr-2"></i>{{productItem().rating.rate}}
+        </p>
+        <span class="text-xl font-bold text-[#e2250c]">{{productItem().price}} €</span>
+      </div>
+    </div>
+
+    <!-- Hover overlay -->
+    <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+      <div class="flex space-x-4 text-white">
+        <i class="fa fa-cart-shopping text-2xl cursor-pointer hover:text-[#e2250c] transition-colors duration-300" (click)="addToCart(productItem())"></i>
+        <i class="fa fa-eye text-2xl cursor-pointer hover:text-[#e2250c] transition-colors duration-300" (click)="navigateToProductDetails(productItem().id)"></i>
+      </div>
     </div>
   </div>
 }

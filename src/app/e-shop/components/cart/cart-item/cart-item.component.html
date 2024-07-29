@@ -1,37 +1,61 @@
 @if (cartItem()) {
-  <div>
-    <div class="row mb-2">
-      <div class="col-md-2">
-        <img class="thumbnail" [src]="cartItem().product.image" height="35px" width="35px"/>
+  <div class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm">
+    <div class="flex items-center space-x-4">
+      <!-- Product Image -->
+      <div class="flex-shrink-0">
+        <img
+          class="w-12 h-12 object-cover rounded-md"
+          [src]="cartItem().product.image"
+          alt="Product Image"
+        />
       </div>
-      <div class="col-md-2">
-        {{ cartItem().product.title }}
+
+      <!-- Product Title with Tooltip -->
+      <div class="flex-1 relative group">
+        <!-- Truncated Product Title -->
+        <span class="block text-gray-800 font-medium truncate max-w-xs"
+              aria-label="Product Title">
+          {{ cartItem().product.title }}
+        </span>
+        <!-- Tooltip -->
+        <div class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-max max-w-xs px-2 py-1 bg-gray-700 text-white text-xs rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          {{ cartItem().product.title }}
+        </div>
       </div>
-      <div class="col-md-2">
+
+      <!-- Product Category -->
+      <div class="flex-1 text-gray-600">
         {{ cartItem().product.category }}
       </div>
-      <div class="col-md-2 text-center">
-        {{ cartItem().product.price }}
-      </div>
-      <div class="col-md-2">
-        <select class="form-select"
-                aria-label="Quantity list"
-                style="margin-bottom: 10px; width:60px; margin: 0 auto"
-                [ngModel]="cartItem().quantity"
-                (ngModelChange)="onQuantitySelected($event)">
-                <option disabled
-                value="">--Select a quantity--</option>
-                @for (quantity of qtyArr(); track $index) {
-                  <option>{{ quantity }}</option>
-                }
 
+      <!-- Product Price -->
+      <div class="flex-1 text-gray-800 font-semibold text-center">
+        ${{ cartItem().product.price }}
+      </div>
+
+      <!-- Quantity Selector -->
+      <div class="flex-1">
+        <select
+          class="block w-full bg-gray-100 border border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm px-2 py-1"
+          aria-label="Quantity list"
+          [ngModel]="cartItem().quantity"
+          (ngModelChange)="onQuantitySelected($event)"
+        >
+          <option disabled value="">--Select a quantity--</option>
+          @for (quantity of qtyArr(); track $index) {
+            <option>{{ quantity }}</option>
+          }
         </select>
       </div>
-      <div class="col-md-2 text-center">
-        <button type="button"
-                class="btn btn-danger"
-                aria-label="Delete"
-                (click)="onRemove()">
+
+      <!-- Remove Button -->
+      <div class="flex-shrink-0">
+        <button
+          type="button"
+          class="px-4 py-2 bg-red-600 text-white rounded-lg shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+          aria-label="Delete"
+          (click)="onRemove()"
+        >
           Delete
         </button>
       </div>

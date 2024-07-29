@@ -3,13 +3,14 @@ import { NgFor, NgIf } from '@angular/common';
 import { EshopService } from '../../../service/e-shop.service';
 import { ProductItemComponent } from '../product-item/product-item.component';
 import { ProductModel } from '../../../models/e-shop.type';
+import { DataNotFoundComponent } from '../../../../shared/data-not-found/data-not-found.component';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss'],
   standalone: true,
-  imports: [NgIf, NgFor, ProductItemComponent],
+  imports: [NgIf, NgFor, ProductItemComponent, DataNotFoundComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductListComponent {

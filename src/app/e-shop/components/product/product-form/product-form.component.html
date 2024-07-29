@@ -1,0 +1,69 @@
+<form [formGroup]="form" class="space-y-6 p-8 max-w-md mx-auto bg-white shadow-lg rounded-lg border border-gray-200">
+  <!-- Product Name -->
+  <div>
+    <label for="name" class="block text-sm font-medium text-gray-800">Product Name</label>
+    <input
+      type="text"
+      formControlName="name"
+      id="name"
+      class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm bg-gray-50 text-gray-900 placeholder-gray-400 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 sm:text-sm px-4 py-3 transition duration-150 ease-in-out"
+      placeholder="Enter product name"
+      autocomplete="off"
+      aria-label="Product Name" />
+      <app-show-form-error [control]="form.get('name')"></app-show-form-error>
+  </div>
+
+  <!-- Category -->
+  <div>
+    <label for="category" class="block text-sm font-medium text-gray-800">Category</label>
+    <select
+      class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm bg-gray-50 text-gray-900 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 sm:text-sm px-4 py-3 transition duration-150 ease-in-out"
+      formControlName="category"
+      id="category"
+      aria-label="Category">
+      <option value="" disabled selected>Choose Category</option>
+      @for (category of categories(); track $index) {
+        <option [value]="category">{{category}}</option>
+      }
+    </select>
+    <app-show-form-error [control]="form.get('category')"></app-show-form-error>
+  </div>
+
+  <!-- Product Image URL -->
+  <div>
+    <label for="imageUrl" class="block text-sm font-medium text-gray-800">Product Image URL</label>
+    <input
+      type="text"
+      formControlName="imageUrl"
+      id="imageUrl"
+      class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm bg-gray-50 text-gray-900 placeholder-gray-400 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 sm:text-sm px-4 py-3 transition duration-150 ease-in-out"
+      placeholder="Enter image URL"
+      aria-label="Product Image" />
+      <app-show-form-error [customErrorMessage]="errorFormMessage" [control]="form.get('imageUrl')"></app-show-form-error>
+  </div>
+
+  <!-- Price -->
+  <div>
+    <label for="price" class="block text-sm font-medium text-gray-800">Price</label>
+    <input
+      type="number"
+      formControlName="price"
+      id="price"
+      min="0"
+      class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm bg-gray-50 text-gray-900 placeholder-gray-400 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 sm:text-sm px-4 py-3 transition duration-150 ease-in-out"
+      placeholder="0.00"
+      aria-label="Price" />
+      <app-show-form-error [control]="form.get('price')"></app-show-form-error>
+  </div>
+
+  <!-- Submit Button -->
+  <div>
+    <button
+      [disabled]="form.invalid"
+      type="button"
+      (click)="sendForm()"
+      class="w-full bg-[#e2250c] text-white px-4 py-3 rounded-lg shadow-md hover:bg-[#e2250c] focus:outline-none focus:ring-2 focus:ring-[#e2250c] focus:ring-offset-2 transition duration-150 ease-in-out">
+      Send
+    </button>
+  </div>
+</form>

@@ -1,23 +1,24 @@
-<div class="card border-secondary">
-  @if (cartItems().length) {
-  <div class="card-body">
+@if (cartItems().length) {
+<div class="p-6 max-w-4xl mx-auto bg-white border border-gray-200 rounded-lg shadow-lg">
+    <div class="space-y-4">
+      <!-- Header Row -->
+      <div class="grid grid-cols-6 gap-4 text-gray-800 font-semibold border-b border-gray-200 pb-2 mb-2">
+        <div class="text-left">Image</div>
+        <div class="text-left">Product</div>
+        <div class="text-left">Category</div>
+        <div class="text-center">Price (€)</div>
+        <div class="text-center">Quantity</div>
+        <div class="text-right"></div>
+      </div>
 
-        <div class="row">
-          <div class="col-md-2 fw-bold">Image</div>
-          <div class="col-md-2 fw-bold">Product</div>
-          <div class="col-md-2 fw-bold">category</div>
-          <div class="col-md-2 fw-bold text-center">Price €</div>
-          <div class="col-md-2 fw-bold text-center">Quantity</div>
-          <div class="col-md-2 fw-bold text-end"></div>
-        </div>
+      <!-- Display the cart items -->
+      @for (item of cartItems(); track $index) {
+        <app-cart-item [item]="item" />
+        <hr class="border-gray-200" />
+      }
+    </div>
 
-        <!-- *Display the cart items *-->
-        @for (item of cartItems(); track $index) {
-          <app-cart-item [item]="item" />
-          <hr />
-        }
-  </div>
-}@else {
-  No items in cart
-}
 </div>
+} @else {
+  <app-data-not-found />
+}

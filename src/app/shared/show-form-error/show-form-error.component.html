@@ -1,0 +1,10 @@
+@if (shouldShowErrors()) {
+  @for (error of listOfErrors(); track $index) {
+    <div class="mt-2 text-sm text-red-600">
+      @if (icon()) {
+        <img [src]="icon()" alt="img-error" class="w-5 h-5 mr-2" aria-hidden="true" />
+      }
+      {{error}}
+    </div>
+  }
+}

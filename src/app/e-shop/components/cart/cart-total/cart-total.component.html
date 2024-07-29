@@ -1,44 +1,38 @@
-@if (cartItems().length) {
-  <div class="card border-secondary">
-
-    <div class="card-header text-secondary fw-bold">
-      <div class="row">
-        <div class="col-md-12">Cart Total</div>
-      </div>
+@let contentCart = cartItems().length;
+@if (contentCart) {
+  <div class="p-6 max-w-md mx-auto bg-white border border-gray-200 rounded-lg shadow-lg">
+    <div class="border-b border-gray-200 pb-4 mb-4">
+      <h2 class="text-xl font-bold text-gray-800">Cart Total</h2>
     </div>
 
-    <div class="card-body">
-      <div class="row">
-        <div class="col-md-4">Subtotal:</div>
-        <div class="col-md-4 text-end">
-          {{subTotal() | number:'1.2-2'}} €
-        </div>
+    <div class="space-y-4">
+      <!-- Subtotal -->
+      <div class="flex justify-between items-center text-gray-800">
+        <span>Subtotal:</span>
+        <span class="font-semibold">@let initialTotal = subTotal(); {{initialTotal | number:'1.2-2'}} €</span>
       </div>
 
-      <div class="row">
-        <div class="col-md-4">Delivery:</div>
-        @if (deliveryFree()) {
-          <div class="col-md-4 text-end">
-            {{deliveryFree() | number:'1.2-2'}} €
-          </div>
+      <!-- Delivery -->
+      <div class="flex justify-between items-center text-gray-800">
+        <span>Delivery:</span>
+        @let isFree = deliveryFree();
+        @if (isFree) {
+          <span class="font-semibold">@let isFree = deliveryFree(); {{isFree | number:'1.2-2'}} €</span>
         } @else {
-          <div class="col-md-4 text-end delivery">Free
-          </div>
+          <span class="font-semibold text-green-600">Free</span>
         }
       </div>
 
-      <div class="row">
-        <div class="col-md-4">Estimated Tax:</div>
-        <div class="col-md-4 text-end">
-          {{tax() | number:'1.2-2'}} €
-        </div>
+      <!-- Estimated Tax -->
+      <div class="flex justify-between items-center text-gray-800">
+        <span>Estimated Tax:</span>
+        <span class="font-semibold">@let Estimatedtax = tax(); {{Estimatedtax | number:'1.2-2'}} €</span>
       </div>
 
-      <div class="row">
-        <div class="col-md-4"><b>Total:</b></div>
-        <div class="col-md-4 text-end">
-          <b>{{totalPrice() | number:'1.2-2'}} €</b>
-        </div>
+      <!-- Total -->
+      <div class="flex justify-between items-center text-gray-800 font-bold">
+        <span>Total:</span>
+        <span>@let total = totalPrice(); {{total | number:'1.2-2'}} €</span>
       </div>
     </div>
   </div>

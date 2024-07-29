@@ -3,7 +3,7 @@ import { RouterLink } from '@angular/router';
 import { EshopService } from '../../e-shop/service/e-shop.service';
 
 @Component({
-  selector: 'app-header',
+  selector: 'app-nav',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   standalone: true,

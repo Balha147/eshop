@@ -1,34 +1,32 @@
 @if (productDetails()) {
-  <div class="container mt-5 mb-5">
-    <div class="row d-flex justify-content-center">
-        <div class="col-md-10">
-            <div class="card">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="images p-3">
-                            <div class="text-center p-4">
-                              <img id="main-image" [src]="productDetails()?.image" width="250" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="product p-4">
-                            <div class="mt-4 mb-3">
-                              <span class="text-uppercase text-muted brand">{{productDetails()?.category}}</span>
-                                <h5 class="text-uppercase">{{productDetails()?.title}}</h5>
-                                <div class="price d-flex flex-row align-items-center">
-                                  <span class="act-price">{{productDetails()?.price}} €</span>
-                                </div>
-                            </div>
-                            <p class="about">{{productDetails()?.description}}</p>
-                            <div class="cart mt-4 align-items-center">
-                              <button class="btn btn-danger text-uppercase mr-2 px-4" (click)="addToCart(productDetails())">Add to cart</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <div class="container mx-auto my-12 px-4">
+    <div class="max-w-4xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+      <div class="flex flex-col md:flex-row">
+        <!-- Image Section -->
+        <div class="w-full md:w-1/4 p-6 flex items-center justify-center bg-gray-50 overflow-x-auto">
+          <div class="relative w-full max-w-full">
+            <img id="main-image" [src]="productDetails()?.image" class="w-full max-w-[500px] h-auto object-contain rounded-lg shadow-md" alt="Product Image" />
+          </div>
         </div>
+        <!-- Product Details Section -->
+        <div class="w-full md:w-1/2 p-6">
+          <div class="space-y-4">
+            <div>
+              <span class="block text-xs font-medium text-gray-500 uppercase tracking-wide">{{productDetails()?.category}}</span>
+              <h2 class="text-3xl font-bold text-gray-900 mt-1">{{productDetails()?.title}}</h2>
+              <p class="text-xl font-semibold text-gray-800 mt-1">{{productDetails()?.price}} €</p>
+            </div>
+            <p class="text-gray-700 mt-4 text-base leading-relaxed">{{productDetails()?.description}}</p>
+            <div class="mt-6">
+              <button
+                class="bg-gradient-to-r from-red-500 to-red-600 text-white py-3 px-6 rounded-lg shadow-lg hover:from-red-600 hover:to-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition-transform transform hover:scale-105"
+                (click)="addToCart(productDetails())">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
 }

@@ -1,12 +1,19 @@
-<div class="row mt-5">
-  <div class="col-md-3">
-    <app-categorie-list />
-  </div>
-  <div class="col-md-9">
-    <div class="row mb-5 w-100">
-      <app-search [(filterCriteria)]="listFiltred"/>
+<div class="container mx-auto p-5">
+  <div class="flex justify-between items-center mb-5">
+    <div class="flex-1">
+      <!-- Search Component -->
+      <app-search class="w-full" [(filterCriteria)]="listFiltred"></app-search>
     </div>
+  </div>
 
-    <app-product-list [filterList]="listFiltred()"/>
+  <div class="flex flex-wrap -mx-3">
+    <div class="w-full md:w-1/4 px-3 mb-5">
+      <!-- Category List Component -->
+      <app-categorie-list></app-categorie-list>
+    </div>
+    <div class="w-full md:w-3/4 px-3">
+      <!-- Product List Component -->
+      <app-product-list [filterList]="listFiltred()"></app-product-list>
+    </div>
   </div>
 </div>

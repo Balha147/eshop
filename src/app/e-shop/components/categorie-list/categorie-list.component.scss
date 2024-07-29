@@ -1,25 +1,3 @@
-.categorie-list {
-    background: #fff;
-    padding: 28px;
-    margin-bottom: 30px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    border-radius: 8px;
-    .title {
-      margin: 0;
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: #bdbdbd;
-    }
-    .content {
-      margin: 15px 0 0;
-      .list-group-item {
-        padding: 7px 35px 7px 0;
-      }
-      .active {
-        color: cadetblue;
-      }
-    }
-
+.text-cadetblue {
+  color: #006374;
 }

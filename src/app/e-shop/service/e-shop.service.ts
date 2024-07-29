@@ -115,6 +115,12 @@ export class EshopService {
     item));
   }
 
+  //* add new product
+
+  addNewProduct(product: ProductModel): Observable<ProductModel> {
+    return this.http.post<ProductModel>(BASE_URL, product);
+  }
+
   //* Error Management
   private handleError(err: HttpErrorResponse): Observable<never> {
     //* in a real world app, we may send the server to some remote logging infrastructure
