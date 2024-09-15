@@ -1,0 +1,33 @@
+version: '3'  # Version du format docker-compose. '3' est une version largement utilisée et stable.
+
+services:
+  # Définition du service 'angular' qui va gérer notre application Angular
+  angular:
+    # Build de l'image Docker à partir du Dockerfile dans le répertoire courant
+    build: .
+
+    # Nom personnalisé du conteneur pour une meilleure identification
+    container_name: eshop-container
+
+    # Mapping des ports : le port 4200 de la machine hôte est relié au port 4200 du conteneur.
+    # Cela permet d'accéder à l'application Angular via http://localhost:4200 sur la machine hôte.
+    ports:
+      - "4200:4200"
+
+    # Commande à exécuter pour démarrer le serveur Angular à l'intérieur du conteneur.
+    # 'npm start' démarre le serveur de développement Angular. '--host 0.0.0.0' permet
+    # d'exposer le serveur sur toutes les interfaces réseau, le rendant accessible depuis l'extérieur du conteneur.
+    command: npm start -- --host 0.0.0.0
+
+    # Définition des volumes pour le partage des fichiers entre la machine hôte et le conteneur.
+    volumes:
+      # Le premier volume relie le répertoire courant de la machine hôte ('./') au répertoire '/app' dans le conteneur.
+      # Cela permet de partager le code source avec le conteneur. Tout changement dans le code source local
+      # sera immédiatement reflété dans le conteneur.
+      - "./:/app"
+
+      # Le second volume ignore le dossier '/app/node_modules' dans le conteneur.
+      # Cela évite que les dépendances Node.js installées dans le conteneur soient remplacées
+      # par celles de la machine hôte (et vice versa), garantissant que le dossier node_modules
+      # reste propre à l'environnement Docker.
+      - "/app/node_modules"
