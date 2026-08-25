@@ -1,74 +1,93 @@
-# CrudSignals
+# 🛒 Angular 19 E-Commerce
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.3.
-This application is a standalone application.
+> A hands-on Angular 19 e-commerce application built to explore modern Angular features, Signals, reactive state management, standalone architecture, lazy loading and Docker.
 
-## Development server
+This project was created as a practical playground to experiment with the evolution of Angular and understand how modern Angular APIs can be applied to a real-world application.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Rather than focusing only on CRUD operations, the project explores how Angular Signals can be used to manage local application state and coordinate interactions between components.
 
-## Build
+---
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## 🎯 Project Goals
 
-## Tasks
+The main objective of this project is to experiment with modern Angular concepts through a realistic e-commerce use case.
 
-Create a Eshop application with signals (Angular 18) using [API](https://fakestoreapi.com/products/)
+The application focuses on:
 
-* Add a product to Cart  using Signal
-* Modify a product using Signal
-* Delete a product using Signal
-* Badge of notification using Signal
-* Display list of product and categories using Signal
-* Filter list of products using Signal
-* Using lazy-loading 
+- Angular Signals
+- Reactive state management
+- Standalone components
+- Modern Angular APIs
+- Lazy-loaded routes
+- Declarative UI
+- Component communication
+- Product and cart state management
+- API integration
+- Dockerized development environment
 
-## Used Approche
+The project uses the [Fake Store API](https://fakestoreapi.com/) as its product data source.
 
-I have used a __declarative Approach__
+---
 
-### Benefits
+## ✨ Features
 
-* React to user actions and data emissions
-* Mege data from multiple sources
-* Shared data between components
-* More easily use features like the async pipe or use a signals
+### 🛍️ Products
 
-### Docker Support
+- Display products
+- Display product categories
+- Filter products by category
+- View product information
+- Retrieve products from a REST API
 
-This project includes Docker support for easier environment setup and deployment. You can run the Angular application inside a Docker container using Docker Compose, which will automatically handle the environment dependencies such as Node.js.
+### 🛒 Shopping Cart
 
-## Prerequisites
+- Add products to the cart
+- Remove products from the cart
+- Update product quantities
+- Keep cart state using Angular Signals
+- Display the number of items in the cart
 
-Make sure you have Docker and Docker Compose installed on your system:
-* Docker
-* Docker Compose
+### 🔎 Product Filtering
 
-## Running the Application with Docker
+Products can be filtered dynamically by category while keeping the UI synchronized with the application state.
 
-Follow these steps to run the application inside a Docker container:
-* __Clone the project repository__: If you haven't cloned the project yet, clone the repository first:
-* git clone https://github.com/Balha147/eshop.git
-* cd eshop
+### 🔔 Reactive Notifications
 
-Build and start the container: Use the following command to build the Docker image and start the container:
-* docker-compose up --build
+The cart badge is automatically updated when the cart state changes.
 
-## Stopping the Container
-To stop the running container, use the following command:
-* docker-compose down
+### 🚀 Lazy Loading
 
-## Docker Files Overview
-Dockerfile: This file contains the instructions to create a Docker image for the Angular project.
-* __Base image:__ The project uses Node.js version 20.
-* __Clone repository:__ It clones the project from the GitHub repository.
-* __Install dependencies:__ It runs npm install to install project dependencies.
-* __Build the project:__ It runs npm run build to build the Angular project.
-* __Expose port:__ It exposes port 4200 for the development server.
-* __Start the server:__ The container runs the Angular development server __(npm start)__ and binds it to __0.0.0.0__ so that it can be accessed from the host machine.
+Application features are organized using lazy-loaded routes to reduce the initial application workload.
 
-docker-compose.yml: This file defines the services to run the application with Docker Compose.
-* __Service:__ The angular service builds the Docker image from the Dockerfile.
-* __Ports:__ It maps port 4200 of the container to port 4200 on the host machine.
-* __Volumes:__ The current project directory is mounted inside the container, allowing for real-time synchronization of files between the host and container, excluding node_modules to avoid conflicts.
-* __Command:__ It runs the __npm start__ command to launch the development server
+### 🐳 Docker
+
+The project includes Docker support to provide a consistent development environment.
+
+---
+
+# ⚡ Angular Signals
+
+One of the main objectives of this project is to experiment with Angular Signals.
+
+Signals provide a reactive primitive for tracking application state and allowing Angular to react to state changes. :contentReference[oaicite:1]{index=1}
+
+The application uses Signals for state such as:
+
+```text
+Products
+    │
+    ▼
+Product Signal
+    │
+    ├── Product-list
+    ├── Categories
+    └── Filtering
+         
+Cart
+    │
+    ▼
+Cart Signal
+    │
+    ├── Cart items
+    ├── Quantities
+    └── Notification badge
