@@ -93,7 +93,7 @@ Cart Signal
     └── Notification badge
 
 
-    &.accounts {
+   &.accounts {
   @include respond-to('desktop') {
     &::before {
       display: block;
